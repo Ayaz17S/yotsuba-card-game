@@ -56,11 +56,11 @@ wild.forEach(work => {
 
 //Shuffling Cards
 
-for(let i=0;i<totalCards.length;i++){
+for (let i = 0; i < totalCards.length; i++) {
     index = Math.floor(Math.random() * (totalCards.length));
-    let temp=totalCards[index]
-    totalCards[index]=totalCards[i]
-    totalCards[i]=temp
+    let temp = totalCards[index]
+    totalCards[index] = totalCards[i]
+    totalCards[i] = temp
 }
 
 //Distributing Cards
@@ -82,5 +82,24 @@ for (player in players) {
 console.log(totalCards);
 
 //Keeping track of top
-let top=[]
-top.push(totalCards[totalCards.length-1])
+let topCard = []
+topCard.push(totalCards[totalCards.length - 1]);
+
+if (topCard[topCard.length - 1].type == "wild") {
+    while (true) {
+        index = Math.floor(Math.random() * (totalCards.length - 1));
+        if (totalCards[index].type != "wild") {
+            let temp = totalCards[index];
+            totalCards[index] = totalCards[totalCards.length - 1];
+            totalCards[totalCards.length - 1] = temp;
+            topCard.push(totalCards[totalCards.length - 1]);
+            break;
+        }
+    }
+}
+
+console.log(topCard);
+
+
+
+
