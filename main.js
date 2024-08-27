@@ -53,9 +53,17 @@ wild.forEach(work => {
     }
 })
 
-// Some elements are becoming undefined , need to find  a proper way to remove elements
-// Swap with last element and then pop
-// Change the scope of index
+
+//Shuffling Cards
+
+for(let i=0;i<totalCards.length;i++){
+    index = Math.floor(Math.random() * (totalCards.length));
+    let temp=totalCards[index]
+    totalCards[index]=totalCards[i]
+    totalCards[i]=temp
+}
+
+//Distributing Cards
 
 for (let i = 0; i < 7; i++) {
     for (let player in players) {
@@ -72,3 +80,7 @@ for (player in players) {
 }
 
 console.log(totalCards);
+
+//Keeping track of top
+let top=[]
+top.push(totalCards[totalCards.length-1])
