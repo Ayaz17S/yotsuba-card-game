@@ -26,8 +26,8 @@ console.log(players)
 
 
 const colors = ["red", "blue", "green", "yellow"];
-const actions = ["skip", "reverse", "draw2"];
-const wild = ["draw4", "wild"];
+const actions = ["skip", "reverse", "draw2", "trade1"];
+const wild = ["draw4", "wild", "freeze", "trade-all"];
 
 for (let i = 0; i <= 9; i++) {
     colors.forEach(color => {
@@ -53,15 +53,17 @@ wild.forEach(work => {
     }
 })
 
-//Some elements are becoming undefined , need to find  a proper way to remove elements
-//Swap with last element and then pop
-//Change the scope of index
+// Some elements are becoming undefined , need to find  a proper way to remove elements
+// Swap with last element and then pop
+// Change the scope of index
 
-for (let i = 0; i <= 6; i++) {
+for (let i = 0; i < 7; i++) {
     for (let player in players) {
         index = Math.floor(Math.random() * (totalCards.length));
         players[player].cards.push(totalCards[index])
-        delete totalCards[index]
+
+        totalCards[index] = totalCards[totalCards.length - 1];
+        totalCards.pop();
     }
 }
 
@@ -70,4 +72,3 @@ for (player in players) {
 }
 
 console.log(totalCards);
-
